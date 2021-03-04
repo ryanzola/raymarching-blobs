@@ -111,12 +111,10 @@ void main(){
 		color=normal;
 		float diff=dot(vec3(1.),normal);
 		vec2 matcapUV=getmatcap(ray,normal);
-		if(type<.5){
-			color=texture2D(matcap1,matcapUV).rgb;
+
+		color=vec3(0);
 			
-		}else{
-			color=texture2D(matcap2,matcapUV).rgb;
-		}
+
 		
 		float fresnel=pow(1.+dot(ray,normal),3.);
 		color=mix(color,bg,fresnel);
