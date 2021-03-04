@@ -1,5 +1,5 @@
 import * as THREE from "three";
-
+import dat from "dat.gui";
 import fragment from "./shader/fragment.glsl";
 import vertex from "./shader/vertex.glsl";
 
@@ -23,7 +23,6 @@ export default class Sketch {
     this.container.appendChild(this.renderer.domElement);
 
     var frustumSize = 1;
-    var aspect = window.innerWidth / window.innerHeight;
     this.camera = new THREE.OrthographicCamera(
       frustumSize / -2,
       frustumSize / 2,
@@ -43,15 +42,15 @@ export default class Sketch {
     this.render();
     this.setupResize();
     this.mouseEvents();
-    this.settings();
+    // this.settings();
   }
 
   settings() {
     this.settings = {
       progress: 0
     };
-    // this.gui = new dat.GUI();
-    // this.gui.add(this.settings, "progress", 0, 1, 0.01);
+    this.gui = new dat.GUI();
+    this.gui.add(this.settings, "progress", 0, 1, 0.01);
   }
 
   setupResize() {
@@ -112,15 +111,13 @@ export default class Sketch {
         time: { type: "f", value: 0 },
         progress: { type: "f", value: 0 },
         mouse: { type: "v2", value: new THREE.Vector2() },
-        matcap: { type: "t", value: new THREE.TextureLoader().load(matcap1) },
+        matcap1: { type: "t", value: new THREE.TextureLoader().load(matcap1) },
         matcap2: { type: "t", value: new THREE.TextureLoader().load(matcap2) },
         resolution: { type: "v4", value: new THREE.Vector4() },
         uvRate1: {
           value: new THREE.Vector2(1, 1)
         }
       },
-      // wireframe: true,
-      // transparent: true,
       vertexShader: vertex,
       fragmentShader: fragment
     });
