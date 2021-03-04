@@ -112,7 +112,7 @@ export default class Sketch {
         progress: { type: "f", value: 0 },
         mouse: { type: "v2", value: new THREE.Vector2() },
         matcap1: { type: "t", value: new THREE.TextureLoader().load(matcap1) },
-        matcap2: { type: "t", value: new THREE.TextureLoader().load(matcap2) },
+        matcap2: { type: "t", value: new THREE.TextureLoader().load(matcap1) },
         resolution: { type: "v4", value: new THREE.Vector4() },
         uvRate1: {
           value: new THREE.Vector2(1, 1)
